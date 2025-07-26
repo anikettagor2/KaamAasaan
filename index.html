@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate Generator</title>
+
+  <!-- Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      font-size: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    input[type="text"],
+    select {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #333;
+      width: 100%;
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(90deg, #3498db, #2980b9);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(90deg, #2980b9, #3498db);
+    }
+
+    .select2-container--default .select2-selection--single {
+      height: 48px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    @media screen and (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Kaam Aasaan Kar Bhidu 😎</h1>
+
+    <form method="post" action="https://script.google.com/macros/s/AKfycbwjTPDSS_XuE7nOqMwHYUsnFmwVLcZf0B3d-7f9NcRQe-dSLGqjTZbk5mJiPsxQ7qAVPA/exec" target="_blank">
+
+      <!-- Dropdown: Students D01 to D12 -->
+      <select id="name" name="name" required>
+        <option value="" disabled selected>Select Student</option>
+        <option value="ABHISHEK SHRIVAS" data-roll="0901CS243D01">ABHISHEK SHRIVAS</option>
+        <option value="ANIKET RAMESH TAGOR" data-roll="0901CS243D02">ANIKET RAMESH TAGOR</option>
+        <option value="ANURAG VISHWAKARMA" data-roll="0901CS243D03">ANURAG VISHWAKARMA</option>
+        <option value="KRISHNA SHRIVASTAVA" data-roll="0901CS243D04">KRISHNA SHRIVASTAVA</option>
+        <option value="PRABHANSHUKAMAL AHIRWAR" data-roll="0901CS243D05">PRABHANSHUKAMAL AHIRWAR</option>
+        <option value="PRACHI SHARMA" data-roll="0901CS243D06">PRACHI SHARMA</option>
+        <option value="PRASHANT DHAKAD" data-roll="0901CS243D07">PRASHANT DHAKAD</option>
+        <option value="PRASHANT SUMAN" data-roll="0901CS243D08">PRASHANT SUMAN</option>
+        <option value="PURVA BOPCHE" data-roll="0901CS243D09">PURVA BOPCHE</option>
+        <option value="SUBHASH DHANGI" data-roll="0901CS243D10">SUBHASH DHANGI</option>
+        <option value="SWASTIK JAIN" data-roll="0901CS243D11">SWASTIK JAIN</option>
+        <option value="UDIPT KUSHWAHA" data-roll="0901CS243D12">UDIPT KUSHWAHA</option>
+      </select>
+
+      <input type="text" id="rollNo" name="rollNo" readonly required placeholder="Auto-filled Roll Number">
+      <input type="text" name="subject" required placeholder="Enter Subject Name">
+      <input type="text" name="subjectCode" required placeholder="Enter Subject Code">
+      <input type="text" name="professor" required placeholder="Enter Professor Name">
+
+      <select name="purpose" required>
+        <option value="" disabled selected>Select Purpose</option>
+        <option value="Practical File">Practical File</option>
+        <option value="Lab Assignment">Lab Assignment</option>
+        <option value="Project Submission">Project Submission</option>
+      </select>
+
+      <input type="submit" value="Generate Certificate">
+    </form>
+  </div>
+
+  <footer>
+    💡 Idea  by <strong><a href="https://www.linkedin.com/in/krishna-shrivastava-62b72129a/">KRISHNA SHRIVASTAVA</a></strong> — executed & enhanced by <strong><a href="https://www.linkedin.com/in/aniket-tagor-25932b246/">ANIKET TAGOR</a></strong> ❤️‍🔥
+  </footer>
+
+  <!-- jQuery + Select2 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#name').select2();
+      $('#name').on('change', function () {
+        const roll = $(this).find('option:selected').data('roll');
+        $('#rollNo').val(roll);
+      });
+    });
+  </script>
+</body>
+</html>

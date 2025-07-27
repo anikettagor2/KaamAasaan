@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>front page maker </title>
-
-  <!-- Select2 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaam Aasaan Kar Bhidu 😎</title>
   <style>
     * {
       box-sizing: border-box;
@@ -19,7 +17,6 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
@@ -30,20 +27,39 @@
       border-radius: 12px;
       box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
       width: 100%;
-      max-width: 450px;
+      max-width: 480px;
+      margin-top: 20px;
+      display: none;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       color: #2c3e50;
       font-size: 24px;
+    }
+
+    .selector {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .selector button {
+      padding: 14px 22px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #3498db, #2980b9);
+      color: white;
+      margin: 10px;
+      cursor: pointer;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
     input[type="text"],
@@ -56,7 +72,8 @@
       width: 100%;
     }
 
-    input[type="submit"] {
+    input[type="submit"],
+    .back-btn {
       background: linear-gradient(90deg, #3498db, #2980b9);
       color: white;
       border: none;
@@ -68,16 +85,9 @@
       transition: background 0.3s ease;
     }
 
-    input[type="submit"]:hover {
+    input[type="submit"]:hover,
+    .back-btn:hover {
       background: linear-gradient(90deg, #2980b9, #3498db);
-    }
-
-    .select2-container--default .select2-selection--single {
-      height: 48px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      padding: 8px 12px;
-      font-size: 16px;
     }
 
     footer {
@@ -92,67 +102,175 @@
         padding: 20px;
       }
     }
+
+    .back-btn {
+      margin: 10px;
+    }
   </style>
 </head>
 
 <body>
-  <h1>Form bharo, file bano, aur dimaag thanda rakh bhai <br>
-    "Front-page banana hai? Bhidu, 1 click aur kaam khallas! 💥"
 
-  </h1>
-  <div class="container">
-    <h1>Kaam Aasaan Kar Bhidu 😎</h1>
+  <!-- Selector -->
+  <div class="container selector" style="display: block;" id="selectorBox">
+    <h1> Submission Time Bhidu Tension Nahi  😎</h1>
+    <p>Bata tu group me hai ki Individual ?</p>
+    <button onclick="showForm('front')">🖼️ Individual</button>
+    <button onclick="showForm('cert')">📄 Group</button>
+  </div>
 
-    <form method="post" action="https://script.google.com/macros/s/AKfycbwjTPDSS_XuE7nOqMwHYUsnFmwVLcZf0B3d-7f9NcRQe-dSLGqjTZbk5mJiPsxQ7qAVPA/exec" target="_blank">
-
-      <!-- Dropdown: Students D01 to D12 -->
-      <select id="name" name="name" required>
-        <option value="" disabled selected>Select Student</option>
-        <option value="ABHISHEK SHRIVAS" data-roll="0901CS243D01">ABHISHEK SHRIVAS</option>
-        <option value="ANIKET RAMESH TAGOR" data-roll="0901CS243D02">ANIKET RAMESH TAGOR</option>
-        <option value="ANURAG VISHWAKARMA" data-roll="0901CS243D03">ANURAG VISHWAKARMA</option>
-        <option value="KRISHNA SHRIVASTAVA" data-roll="0901CS243D04">KRISHNA SHRIVASTAVA</option>
-        <option value="PRABHANSHUKAMAL AHIRWAR" data-roll="0901CS243D05">PRABHANSHUKAMAL AHIRWAR</option>
-        <option value="PRACHI SHARMA" data-roll="0901CS243D06">PRACHI SHARMA</option>
-        <option value="PRASHANT DHAKAD" data-roll="0901CS243D07">PRASHANT DHAKAD</option>
-        <option value="PRASHANT SUMAN" data-roll="0901CS243D08">PRASHANT SUMAN</option>
-        <option value="PURVA BOPCHE" data-roll="0901CS243D09">PURVA BOPCHE</option>
-        <option value="SUBHASH DHANGI" data-roll="0901CS243D10">SUBHASH DHANGI</option>
-        <option value="SWASTIK JAIN" data-roll="0901CS243D11">SWASTIK JAIN</option>
-        <option value="UDIPT KUSHWAHA" data-roll="0901CS243D12">UDIPT KUSHWAHA</option>
-      </select>
-
-      <input type="text" id="rollNo" name="rollNo" readonly required placeholder="Auto-filled Roll Number">
-      <input type="text" name="subject" required placeholder="Enter Subject Name">
-      <input type="text" name="subjectCode" required placeholder="Enter Subject Code">
-      <input type="text" name="professor" required placeholder="Enter Professor Name">
-
+  <!-- Individual Form -->
+  <div class="container" id="frontForm">
+    <h1>🖼️ Front Page Generator</h1>
+    <button type="button" class="back-btn" onclick="goBack()">⬅️ Back</button>
+    <form method="post"
+      action="https://script.google.com/macros/s/AKfycbwjTPDSS_XuE7nOqMwHYUsnFmwVLcZf0B3d-7f9NcRQe-dSLGqjTZbk5mJiPsxQ7qAVPA/exec"
+      target="_blank">
       <select name="purpose" required>
-        <option value="" disabled selected>Select Purpose</option>
+        <option value="" disabled selected>Kya bana raha hai</option>
         <option value="Practical File">Practical File</option>
         <option value="Lab Assignment">Lab Assignment</option>
         <option value="Project Submission">Project Submission</option>
+        <option value="Skills Mini Submission">Skill Based Mini Project</option>
+        <option value="Skill Based Micro Project">Skill Based Micro Project</option>
       </select>
-
-      <input type="submit" value="Downlaod Front page">
+      <input type="text" name="name" required placeholder="Enter Student Name">
+      <input type="text" name="rollNo" required placeholder="Enter Roll Number">
+      <input type="text" name="subject" required placeholder="Enter Subject Name">
+      <input type="text" name="subjectCode" required placeholder="Enter Subject Code">
+      <input type="text" name="topic" required placeholder="Enter Topic Name">
+      <input type="text" name="professor" required placeholder="Enter Professor Name">
+      <select name="department" required>
+        <option value="" disabled selected>Department</option>
+        <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Chemical Engineering">Chemical Engineering</option>
+        <option value="Computer Science & Design">Computer Science & Design</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="Electronics & Communication">Electronics & Communication</option>
+      </select>
+       <select name="session" required>
+        <option value="" disabled selected>Session</option>
+        <option value="JAN–JUNE 2023">JAN–JUNE 2023</option>
+        <option value="JULY–DEC 2023">JULY–DEC 2023</option>
+        <option value="JAN–JUNE 2024">JAN–JUNE 2024</option>
+        <option value="JULY–DEC 2024">JULY–DEC 2024</option>
+        <option value="JAN–JUNE 2025">JAN–JUNE 2025</option>
+        <option value="JULY–DEC 2025">JULY–DEC 2025</option>
+        <option value="JAN–JUNE 2026">JAN–JUNE 2026</option>
+        <option value="JULY–DEC 2026">JULY–DEC 2026</option>
+        <option value="JAN–JUNE 2027">JAN–JUNE 2027</option>
+        <option value="JULY–DEC 2027">JULY–DEC 2027</option>
+      </select>
+      <input type="submit" value="Generate Front Page">
     </form>
   </div>
 
-  <footer>
-    💡 Idea  by <strong><a href="https://www.linkedin.com/in/krishna-shrivastava-62b72129a/">KRISHNA SHRIVASTAVA</a></strong> — executed & enhanced by <strong><a href="https://www.linkedin.com/in/aniket-tagor-25932b246/">ANIKET TAGOR</a></strong> ❤️‍🔥
+  <!-- Group Form -->
+  <!-- Group Form -->
+  <div class="container" id="certForm">
+    <h1>📄 Group Submission Generator</h1>
+    <button type="button" class="back-btn" onclick="goBack()">⬅️ Back</button>
+    <form method="post" id="groupForm" target="_blank" >
+
+        <select name="purpose" required>
+        <option value="" disabled selected>Kya bana raha hai</option>
+        <option value="Practical File">Practical File</option>
+        <option value="Lab Assignment">Lab Assignment</option>
+        <option value="Project Submission">Project Submission</option>
+        <option value="Skill Based Mini Project ">Skill Based Mini Project Submission</option>
+        <option value="Skill Based Micro Project ">Skill Based Micro Project Submission</option>
+      </select>
+
+      <!-- <label for="groupSize">Kitne student hai group mein?</label> -->
+      <select name="groupSize" id="groupSize" onchange="renderGroupFields()" required>
+        <option value="" disabled selected>Select No. of Students</option>
+        <option value="1">1 Student</option>
+        <option value="2">2 Students</option>
+        <option value="3">3 Students</option>
+        <option value="4">4 Students</option>
+      </select>
+
+      <div id="groupFields" style="margin-top: 20px;"></div>
+
+      <input type="text" name="projectName" required placeholder="Enter Project/Topic Name">
+      <input type="text" name="professor" required placeholder="Enter Professor Name">
+      <input type="text" name="hod" required placeholder="Enter HOD Name">
+
+      <!-- ✅ Department Dropdown -->
+      <select name="department" required>
+        <option value="" disabled selected>Department</option>
+        <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Chemical Engineering">Chemical Engineering</option>
+        <option value="Computer Science & Design">Computer Science & Design</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="Electronics & Communication">Electronics & Communication</option>
+      </select>
+
+      <!-- ✅ Session Dropdown -->
+      <select name="session" required>
+        <option value="" disabled selected>Session</option>
+        <option value="JAN–JUNE 2023">JAN–JUNE 2023</option>
+        <option value="JULY–DEC 2023">JULY–DEC 2023</option>
+        <option value="JAN–JUNE 2024">JAN–JUNE 2024</option>
+        <option value="JULY–DEC 2024">JULY–DEC 2024</option>
+        <option value="JAN–JUNE 2025">JAN–JUNE 2025</option>
+        <option value="JULY–DEC 2025">JULY–DEC 2025</option>
+        <option value="JAN–JUNE 2026">JAN–JUNE 2026</option>
+        <option value="JULY–DEC 2026">JULY–DEC 2026</option>
+        <option value="JAN–JUNE 2027">JAN–JUNE 2027</option>
+        <option value="JULY–DEC 2027">JULY–DEC 2027</option>
+      </select>
+
+      <input type="submit" value="Generate Group PDF">
+    </form>
+  </div>
+
+
+  <footer style="margin-top: 4rem;color: black;font-size: 1rem;">
+    Created & executed & enhanced by <strong><a href="https://www.linkedin.com/in/aniket-tagor-25932b246/"
+        target="_blank">Aniket Tagor</a> for MITS GWL & All Department Students</strong> ❤️‍🔥
   </footer>
 
-  <!-- jQuery + Select2 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
-    $(document).ready(function () {
-      $('#name').select2();
-      $('#name').on('change', function () {
-        const roll = $(this).find('option:selected').data('roll');
-        $('#rollNo').val(roll);
-      });
-    });
+    function showForm(type) {
+      document.getElementById('selectorBox').style.display = 'none';
+      if (type === 'front') {
+        document.getElementById('frontForm').style.display = 'block';
+      } else {
+        document.getElementById('certForm').style.display = 'block';
+      }
+    }
+
+    function goBack() {
+      document.getElementById('frontForm').style.display = 'none';
+      document.getElementById('certForm').style.display = 'none';
+      document.getElementById('selectorBox').style.display = 'block';
+    }
+
+    function renderGroupFields() {
+      const count = parseInt(document.getElementById('groupSize').value);
+      const container = document.getElementById('groupFields');
+      container.innerHTML = '';
+
+      for (let i = 1; i <= count; i++) {
+        container.innerHTML += `
+          <input type="text" name="student${i}" placeholder="Student ${i} (e.g. Aniket(123456))" required style="margin-bottom: 12px;">
+        `;
+      }
+
+      const form = document.getElementById('groupForm');
+      const templates = {
+        1: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
+        2: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
+        3: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
+        4: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
+      };
+      form.action = templates[count] || "";
+    }
   </script>
+
 </body>
+
 </html>

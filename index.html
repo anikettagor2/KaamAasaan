@@ -1,265 +1,602 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kaam Aasaan Kar Bhidu 😎</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: sans-serif;
-      background-color: #f4f6f8;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .container {
-      background-color: #fff;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 480px;
-      margin-top: 20px;
-      display: none;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2c3e50;
-      font-size: 24px;
-    }
-
-    .selector {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .selector button {
-      padding: 14px 22px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(90deg, #3498db, #2980b9);
-      color: white;
-      margin: 10px;
-      cursor: pointer;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    input[type="text"],
-    select {
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 16px;
-      color: #333;
-      width: 100%;
-    }
-
-    input[type="submit"],
-    .back-btn {
-      background: linear-gradient(90deg, #3498db, #2980b9);
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    input[type="submit"]:hover,
-    .back-btn:hover {
-      background: linear-gradient(90deg, #2980b9, #3498db);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 13px;
-      color: #888;
-    }
-
-    @media screen and (max-width: 480px) {
-      .container {
-        padding: 20px;
+  <title>Front Page Generator - MITS GWL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: { 
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'bounce-in': 'bounceIn 0.6s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            bounceIn: {
+              '0%': { transform: 'scale(0.3)', opacity: '0' },
+              '50%': { transform: 'scale(1.05)' },
+              '70%': { transform: 'scale(0.9)' },
+              '100%': { transform: 'scale(1)', opacity: '1' },
+            }
+          }
+        }
       }
     }
-
-    .back-btn {
-      margin: 10px;
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .glass-effect {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .dark .glass-effect {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
 
-<body>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+  <!-- Navigation -->
+  <nav class="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <i class="fas fa-file-alt text-white text-sm"></i>
+          </div>
+          <h1 class="text-xl font-bold text-gray-900 dark:text-white">Front Page Generator</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <i class="fas fa-moon dark:hidden"></i>
+            <i class="fas fa-sun hidden dark:block"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Selector -->
-  <div class="container selector" style="display: block;" id="selectorBox">
-    <h1> Submission Time Bhidu Tension Nahi  😎</h1>
-    <p>Bata tu group me hai ki Individual ?</p>
-    <button onclick="showForm('front')">🖼️ Individual</button>
-    <button onclick="showForm('cert')">📄 Group</button>
-  </div>
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Hero Section -->
+    <div class="text-center mb-12 animate-fade-in">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        Generate Professional
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Front Pages
+        </span>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Create beautiful, professional front pages for your academic submissions. 
+        Perfect for practical files, lab assignments, and project submissions.
+      </p>
+    </div>
 
-  <!-- Individual Form -->
-  <div class="container" id="frontForm">
-    <h1>🖼️ Front Page Generator</h1>
-    <button type="button" class="back-btn" onclick="goBack()">⬅️ Back</button>
-    <form method="post"
-      action="https://script.google.com/macros/s/AKfycbwjTPDSS_XuE7nOqMwHYUsnFmwVLcZf0B3d-7f9NcRQe-dSLGqjTZbk5mJiPsxQ7qAVPA/exec"
-      target="_blank">
-      <select name="purpose" required>
-        <option value="" disabled selected>Kya bana raha hai</option>
-        <option value="Practical File">Practical File</option>
-        <option value="Lab Assignment">Lab Assignment</option>
-        <option value="Project Submission">Project Submission</option>
-        <option value="Skills Mini Submission">Skill Based Mini Project</option>
-        <option value="Skill Based Micro Project">Skill Based Micro Project</option>
-      </select>
-      <input type="text" name="name" required placeholder="Enter Student Name">
-      <input type="text" name="rollNo" required placeholder="Enter Roll Number">
-      <input type="text" name="subject" required placeholder="Enter Subject Name">
-      <input type="text" name="subjectCode" required placeholder="Enter Subject Code">
-      <input type="text" name="topic" required placeholder="Enter Topic Name">
-      <input type="text" name="professor" required placeholder="Enter Professor Name">
-      <select name="department" required>
-        <option value="" disabled selected>Department</option>
-        <option value="Computer Science & Engineering">Computer Science & Engineering</option>
-        <option value="Mechanical Engineering">Mechanical Engineering</option>
-        <option value="Chemical Engineering">Chemical Engineering</option>
-        <option value="Computer Science & Design">Computer Science & Design</option>
-        <option value="Information Technology">Information Technology</option>
-        <option value="Electronics & Communication">Electronics & Communication</option>
-      </select>
-       <select name="session" required>
-        <option value="" disabled selected>Session</option>
-        <option value="JAN–JUNE 2023">JAN–JUNE 2023</option>
-        <option value="JULY–DEC 2023">JULY–DEC 2023</option>
-        <option value="JAN–JUNE 2024">JAN–JUNE 2024</option>
-        <option value="JULY–DEC 2024">JULY–DEC 2024</option>
-        <option value="JAN–JUNE 2025">JAN–JUNE 2025</option>
-        <option value="JULY–DEC 2025">JULY–DEC 2025</option>
-        <option value="JAN–JUNE 2026">JAN–JUNE 2026</option>
-        <option value="JULY–DEC 2026">JULY–DEC 2026</option>
-        <option value="JAN–JUNE 2027">JAN–JUNE 2027</option>
-        <option value="JULY–DEC 2027">JULY–DEC 2027</option>
-      </select>
-      <input type="submit" value="Generate Front Page">
-    </form>
-  </div>
+    <!-- Selection Cards -->
+    <div id="selectorBox" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 animate-slide-up">
+      <!-- Individual Card -->
+      <div class="group cursor-pointer" onclick="showForm('front')">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div class="gradient-bg p-8 text-center">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-user text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Individual</h3>
+            <p class="text-blue-100">Single student submissions</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-600 dark:text-gray-300 space-y-2 text-sm">
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Personal projects</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Lab assignments</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Practical files</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-  <!-- Group Form -->
-  <!-- Group Form -->
-  <div class="container" id="certForm">
-    <h1>📄 Group Submission Generator</h1>
-    <button type="button" class="back-btn" onclick="goBack()">⬅️ Back</button>
-    <form method="post" id="groupForm" target="_blank" >
+      <!-- Group Card -->
+      <div class="group cursor-pointer" onclick="showForm('cert')">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div class="gradient-bg p-8 text-center">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-users text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Group</h3>
+            <p class="text-blue-100">Team project submissions</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-600 dark:text-gray-300 space-y-2 text-sm">
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Group projects</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Team assignments</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Collaborative work</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        <select name="purpose" required>
-        <option value="" disabled selected>Kya bana raha hai</option>
-        <option value="Practical File">Practical File</option>
-        <option value="Lab Assignment">Lab Assignment</option>
-        <option value="Project Submission">Project Submission</option>
-        <option value="Skill Based Mini Project ">Skill Based Mini Project Submission</option>
-        <option value="Skill Based Micro Project ">Skill Based Micro Project Submission</option>
-      </select>
+      <!-- AI Report Generator Card -->
+      <div class="group cursor-pointer" onclick="showForm('report')">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div class="gradient-bg p-8 text-center">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-robot text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">AI Report</h3>
+            <p class="text-blue-100">AI-powered report generation</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-600 dark:text-gray-300 space-y-2 text-sm">
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Project reports</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Lab documentation</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Research papers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-      <!-- <label for="groupSize">Kitne student hai group mein?</label> -->
-      <select name="groupSize" id="groupSize" onchange="renderGroupFields()" required>
-        <option value="" disabled selected>Select No. of Students</option>
-        <option value="1">1 Student</option>
-        <option value="2">2 Students</option>
-        <option value="3">3 Students</option>
-        <option value="4">4 Students</option>
-      </select>
+      <!-- Handwritten Assignment Generator Card -->
+      <div class="group cursor-pointer" onclick="window.location.href='handwritten_generator.html'">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div class="gradient-bg p-8 text-center">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-pen-fancy text-white text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Handwritten</h3>
+            <p class="text-blue-100">Handwritten assignment generator</p>
+          </div>
+          <div class="p-6">
+            <ul class="text-gray-600 dark:text-gray-300 space-y-2 text-sm">
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Convert text to handwriting</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Download as PDF</li>
+              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Customizable styles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <div id="groupFields" style="margin-top: 20px;"></div>
+    <!-- Individual Form -->
+    <div id="frontForm" class="hidden animate-bounce-in">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div class="gradient-bg p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <i class="fas fa-user text-white text-xl"></i>
+              <h2 class="text-2xl font-bold text-white">Individual Submission</h2>
+            </div>
+            <button onclick="goBack()" class="text-white hover:text-blue-200 transition-colors">
+              <i class="fas fa-arrow-left text-xl"></i>
+            </button>
+          </div>
+        </div>
+        
+        <form method="post" action="https://script.google.com/macros/s/AKfycbwjTPDSS_XuE7nOqMwHYUsnFmwVLcZf0B3d-7f9NcRQe-dSLGqjTZbk5mJiPsxQ7qAVPA/exec" target="_blank" class="p-8 space-y-6">
+          <!-- Purpose Selection -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <i class="fas fa-tasks mr-2"></i>Submission Type
+            </label>
+            <select name="purpose" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+              <option value="" disabled selected>Select submission type</option>
+              <option value="Practical File">📋 Practical File</option>
+              <option value="Lab Assignment">🔬 Lab Assignment</option>
+              <option value="Project Submission">📁 Project Submission</option>
+              <option value="Skills Mini Submission">🎯 Skill Based Mini Project</option>
+              <option value="Skill Based Micro Project">⚡ Skill Based Micro Project</option>
+            </select>
+          </div>
 
-      <input type="text" name="projectName" required placeholder="Enter Project/Topic Name">
-      <input type="text" name="professor" required placeholder="Enter Professor Name">
-      <input type="text" name="hod" required placeholder="Enter HOD Name">
+          <!-- Student Details -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-user mr-2"></i>Student Name
+              </label>
+              <input type="text" name="name" required placeholder="Enter your full name" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-id-card mr-2"></i>Roll Number
+              </label>
+              <input type="text" name="rollNo" required placeholder="Enter roll number" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+          </div>
 
-      <!-- ✅ Department Dropdown -->
-      <select name="department" required>
-        <option value="" disabled selected>Department</option>
-        <option value="Computer Science & Engineering">Computer Science & Engineering</option>
-        <option value="Mechanical Engineering">Mechanical Engineering</option>
-        <option value="Chemical Engineering">Chemical Engineering</option>
-        <option value="Computer Science & Design">Computer Science & Design</option>
-        <option value="Information Technology">Information Technology</option>
-        <option value="Electronics & Communication">Electronics & Communication</option>
-      </select>
+          <!-- Subject Details -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-book mr-2"></i>Subject Name
+              </label>
+              <input type="text" name="subject" required placeholder="Enter subject name" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-code mr-2"></i>Subject Code
+              </label>
+              <input type="text" name="subjectCode" required placeholder="Enter subject code" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+          </div>
 
-      <!-- ✅ Session Dropdown -->
-      <select name="session" required>
-        <option value="" disabled selected>Session</option>
-        <option value="JAN–JUNE 2023">JAN–JUNE 2023</option>
-        <option value="JULY–DEC 2023">JULY–DEC 2023</option>
-        <option value="JAN–JUNE 2024">JAN–JUNE 2024</option>
-        <option value="JULY–DEC 2024">JULY–DEC 2024</option>
-        <option value="JAN–JUNE 2025">JAN–JUNE 2025</option>
-        <option value="JULY–DEC 2025">JULY–DEC 2025</option>
-        <option value="JAN–JUNE 2026">JAN–JUNE 2026</option>
-        <option value="JULY–DEC 2026">JULY–DEC 2026</option>
-        <option value="JAN–JUNE 2027">JAN–JUNE 2027</option>
-        <option value="JULY–DEC 2027">JULY–DEC 2027</option>
-      </select>
+          <!-- Topic and Professor -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-lightbulb mr-2"></i>Topic Name
+              </label>
+              <input type="text" name="topic" required placeholder="Enter topic name" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-chalkboard-teacher mr-2"></i>Professor Name
+              </label>
+              <input type="text" name="professor" required placeholder="Enter professor name" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+          </div>
 
-      <input type="submit" value="Generate Group PDF">
-    </form>
-  </div>
+          <!-- Department and Session -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-university mr-2"></i>Department
+              </label>
+              <select name="department" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+                <option value="" disabled selected>Select department</option>
+                <option value="Computer Science & Engineering">💻 Computer Science & Engineering</option>
+                <option value="Mechanical Engineering">⚙️ Mechanical Engineering</option>
+                <option value="Chemical Engineering">🧪 Chemical Engineering</option>
+                <option value="Computer Science & Design">🎨 Computer Science & Design</option>
+                <option value="Information Technology">🌐 Information Technology</option>
+                <option value="Electronics & Communication">📡 Electronics & Communication</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-calendar mr-2"></i>Session
+              </label>
+              <select name="session" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+                <option value="" disabled selected>Select session</option>
+                <option value="JAN–JUNE 2023">JAN–JUNE 2023</option>
+                <option value="JULY–DEC 2023">JULY–DEC 2023</option>
+                <option value="JAN–JUNE 2024">JAN–JUNE 2024</option>
+                <option value="JULY–DEC 2024">JULY–DEC 2024</option>
+                <option value="JAN–JUNE 2025">JAN–JUNE 2025</option>
+                <option value="JULY–DEC 2025">JULY–DEC 2025</option>
+                <option value="JAN–JUNE 2026">JAN–JUNE 2026</option>
+                <option value="JULY–DEC 2026">JULY–DEC 2026</option>
+                <option value="JAN–JUNE 2027">JAN–JUNE 2027</option>
+                <option value="JULY–DEC 2027">JULY–DEC 2027</option>
+              </select>
+            </div>
+          </div>
 
+          <!-- Submit Button -->
+          <div class="pt-6">
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <i class="fas fa-magic mr-2"></i>Generate Front Page
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
-  <footer style="margin-top: 4rem;color: black;font-size: 1rem;">
-    Created & executed & enhanced by <strong><a href="https://www.linkedin.com/in/aniket-tagor-25932b246/"
-        target="_blank">Aniket Tagor</a> for MITS GWL & All Department Students</strong> ❤️‍🔥
+    <!-- Group Form -->
+    <div id="certForm" class="hidden animate-bounce-in">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div class="gradient-bg p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <i class="fas fa-users text-white text-xl"></i>
+              <h2 class="text-2xl font-bold text-white">Group Submission</h2>
+            </div>
+            <button onclick="goBack()" class="text-white hover:text-blue-200 transition-colors">
+              <i class="fas fa-arrow-left text-xl"></i>
+            </button>
+          </div>
+        </div>
+        
+        <form method="post" id="groupForm" target="_blank" class="p-8 space-y-6">
+          <!-- Purpose Selection -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <i class="fas fa-tasks mr-2"></i>Submission Type
+            </label>
+            <select name="purpose" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+              <option value="" disabled selected>Select submission type</option>
+              <option value="Practical File">📋 Practical File</option>
+              <option value="Lab Assignment">🔬 Lab Assignment</option>
+              <option value="Project Submission">📁 Project Submission</option>
+              <option value="Skill Based Mini Project ">🎯 Skill Based Mini Project</option>
+              <option value="Skill Based Micro Project ">⚡ Skill Based Micro Project</option>
+            </select>
+          </div>
+
+          <!-- Group Size -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <i class="fas fa-users mr-2"></i>Number of Students
+            </label>
+            <select name="groupSize" id="groupSize" onchange="renderGroupFields()" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+              <option value="" disabled selected>Select number of students</option>
+              <option value="1">👤 1 Student</option>
+              <option value="2">👥 2 Students</option>
+              <option value="3">👥 3 Students</option>
+              <option value="4">👥 4 Students</option>
+            </select>
+          </div>
+
+          <!-- Dynamic Student Fields -->
+          <div id="groupFields" class="space-y-4"></div>
+
+          <!-- Project Details -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-project-diagram mr-2"></i>Project/Topic Name
+              </label>
+              <input type="text" name="projectName" required placeholder="Enter project name" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-chalkboard-teacher mr-2"></i>Professor Name
+              </label>
+              <input type="text" name="professor" required placeholder="Enter professor name" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+          </div>
+
+          <!-- HOD and Department -->
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-user-tie mr-2"></i>HOD Name
+              </label>
+              <input type="text" name="hod" required placeholder="Enter HOD name" 
+                     class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <i class="fas fa-university mr-2"></i>Department
+              </label>
+              <select name="department" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+                <option value="" disabled selected>Select department</option>
+                <option value="Computer Science & Engineering">💻 Computer Science & Engineering</option>
+                <option value="Mechanical Engineering">⚙️ Mechanical Engineering</option>
+                <option value="Chemical Engineering">🧪 Chemical Engineering</option>
+                <option value="Computer Science & Design">🎨 Computer Science & Design</option>
+                <option value="Information Technology">🌐 Information Technology</option>
+                <option value="Electronics & Communication">📡 Electronics & Communication</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Session -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <i class="fas fa-calendar mr-2"></i>Session
+            </label>
+            <select name="session" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+              <option value="" disabled selected>Select session</option>
+              <option value="JAN–JUNE 2023">JAN–JUNE 2023</option>
+              <option value="JULY–DEC 2023">JULY–DEC 2023</option>
+              <option value="JAN–JUNE 2024">JAN–JUNE 2024</option>
+              <option value="JULY–DEC 2024">JULY–DEC 2024</option>
+              <option value="JAN–JUNE 2025">JAN–JUNE 2025</option>
+              <option value="JULY–DEC 2025">JULY–DEC 2025</option>
+              <option value="JAN–JUNE 2026">JAN–JUNE 2026</option>
+              <option value="JULY–DEC 2026">JULY–DEC 2026</option>
+              <option value="JAN–JUNE 2027">JAN–JUNE 2027</option>
+              <option value="JULY–DEC 2027">JULY–DEC 2027</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-6">
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <i class="fas fa-magic mr-2"></i>Generate Group PDF
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- AI Report Generator Form -->
+    <div id="reportForm" class="hidden animate-bounce-in">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div class="gradient-bg p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <i class="fas fa-robot text-white text-xl"></i>
+              <h2 class="text-2xl font-bold text-white">AI Report Generator</h2>
+            </div>
+            <button onclick="goBack()" class="text-white hover:text-blue-200 transition-colors">
+              <i class="fas fa-arrow-left text-xl"></i>
+            </button>
+          </div>
+        </div>
+        
+                 <form id="aiReportForm" class="p-8 space-y-6">
+           <!-- Topic/Title -->
+           <div>
+             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+               <i class="fas fa-lightbulb mr-2"></i>Report Title/Topic
+             </label>
+             <input type="text" id="reportTopic" required placeholder="Enter your report title or topic" 
+                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
+           </div>
+
+           <!-- Number of Pages -->
+           <div>
+             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+               <i class="fas fa-file-text mr-2"></i>Number of Pages
+             </label>
+             <select id="pageCount" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
+               <option value="" disabled selected>Select page count</option>
+               <option value="5">📄 5 Pages</option>
+               <option value="10">📄 10 Pages</option>
+               <option value="15">📄 15 Pages</option>
+               <option value="20">📄 20 Pages</option>
+               <option value="25">📄 25 Pages</option>
+               <option value="30">📄 30 Pages</option>
+               <option value="40">📄 40 Pages</option>
+               <option value="50">📄 50 Pages</option>
+             </select>
+           </div>
+
+           <!-- Additional Requirements -->
+           <div>
+             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+               <i class="fas fa-list-check mr-2"></i>Additional Requirements
+             </label>
+             <textarea id="requirements" rows="6" placeholder="Describe what you want in the report. Include any specific topics, sections, technologies, methodologies, or any other requirements you want included..." 
+                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"></textarea>
+           </div>
+
+          <!-- Submit Button -->
+          <div class="pt-6">
+            <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <i class="fas fa-magic mr-2"></i>Generate AI Report
+            </button>
+          </div>
+        </form>
+      </div>
+         </div>
+   </main>
+
+       <!-- Download Options Modal -->
+    <div id="downloadModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Download Your Report</h3>
+            <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">Your report has been generated successfully! Choose your preferred format:</p>
+          <div class="space-y-3">
+                         <a id="pdfDownload" href="#" class="flex items-center justify-center w-full px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors cursor-pointer">
+               <i class="fas fa-file-pdf mr-3 text-xl"></i>
+               Download as PDF
+             </a>
+             <a id="docxDownload" href="#" class="flex items-center justify-center w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
+               <i class="fas fa-file-word mr-3 text-xl"></i>
+               Download as DOCX
+             </a>
+          </div>
+          <div class="mt-6 text-center">
+            <button id="closeModalBtn2" class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="text-center">
+        <p class="text-gray-600 dark:text-gray-300 text-sm">
+          Created with ❤️ by 
+          <a href="https://www.linkedin.com/in/aniket-tagor-25932b246/" target="_blank" 
+             class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+            Aniket Tagor
+          </a>
+          for MITS GWL & All Department Students
+        </p>
+        <div class="flex justify-center space-x-4 mt-4">
+          <a href="admin_dashboard.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium">
+            <i class="fas fa-cog mr-1"></i>Admin Dashboard
+          </a>
+          <span class="text-gray-400">|</span>
+          <span class="text-gray-500 dark:text-gray-400 text-sm">
+            Professional front page generator for academic submissions
+          </span>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <script src="config.js"></script>
   <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    html.classList.toggle('dark', savedTheme === 'dark');
+    
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', currentTheme);
+    });
+
+    // Form Navigation
     function showForm(type) {
-      document.getElementById('selectorBox').style.display = 'none';
+      document.getElementById('selectorBox').classList.add('hidden');
       if (type === 'front') {
-        document.getElementById('frontForm').style.display = 'block';
-      } else {
-        document.getElementById('certForm').style.display = 'block';
+        document.getElementById('frontForm').classList.remove('hidden');
+      } else if (type === 'cert') {
+        document.getElementById('certForm').classList.remove('hidden');
+      } else if (type === 'report') {
+        document.getElementById('reportForm').classList.remove('hidden');
       }
     }
 
     function goBack() {
-      document.getElementById('frontForm').style.display = 'none';
-      document.getElementById('certForm').style.display = 'none';
-      document.getElementById('selectorBox').style.display = 'block';
+      document.getElementById('frontForm').classList.add('hidden');
+      document.getElementById('certForm').classList.add('hidden');
+      document.getElementById('reportForm').classList.add('hidden'); // Added for report form
+      document.getElementById('selectorBox').classList.remove('hidden');
     }
 
+    // Group Form Dynamic Fields
     function renderGroupFields() {
       const count = parseInt(document.getElementById('groupSize').value);
       const container = document.getElementById('groupFields');
       container.innerHTML = '';
 
       for (let i = 1; i <= count; i++) {
-        container.innerHTML += `
-          <input type="text" name="student${i}" placeholder="Student ${i} (e.g. Aniket(123456))" required style="margin-bottom: 12px;">
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600';
+        fieldDiv.innerHTML = `
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <i class="fas fa-user-graduate mr-2"></i>Student ${i}
+          </label>
+          <input type="text" name="student${i}" 
+                 placeholder="Student ${i} (e.g. Aniket Tagor - 123456)" required 
+                 class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
         `;
+        container.appendChild(fieldDiv);
       }
 
+      // Update form action based on group size
       const form = document.getElementById('groupForm');
       const templates = {
         1: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
@@ -269,8 +606,243 @@
       };
       form.action = templates[count] || "";
     }
+
+         // AI Report Generator Form Handler
+     document.getElementById('aiReportForm').addEventListener('submit', function(e) {
+       e.preventDefault();
+       
+       const submitBtn = this.querySelector('button[type="submit"]');
+       const originalText = submitBtn.innerHTML;
+       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
+       submitBtn.disabled = true;
+       
+               // Collect form data
+        const formData = {
+          topic: document.getElementById('reportTopic').value,
+          pageCount: document.getElementById('pageCount').value,
+          requirements: document.getElementById('requirements').value
+        };
+       
+       // Submit to API
+       fetch('http://localhost:5000/api/submit-report-request', {
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(formData)
+       })
+       .then(response => response.json())
+                       .then(data => {
+          if (data.success) {
+            showNotification('Report generated successfully! You can now download your report.', 'success');
+            
+            // Show download options immediately
+            showDownloadOptions(data.request_id, formData.topic);
+            
+            // Reset form after a delay to prevent interference with modal
+            setTimeout(() => {
+              this.reset();
+            }, 2000);
+          } else {
+            showNotification('Error generating report. Please try again.', 'error');
+          }
+        })
+       .catch(error => {
+         console.error('Error:', error);
+         showNotification('Error submitting request. Please try again.', 'error');
+       })
+       .finally(() => {
+         submitBtn.innerHTML = originalText;
+         submitBtn.disabled = false;
+       });
+     });
+
+           // Show download options
+      function showDownloadOptions(requestId, topic) {
+        const modal = document.getElementById('downloadModal');
+        const pdfLink = document.getElementById('pdfDownload');
+        const docxLink = document.getElementById('docxDownload');
+        
+        // Get form data
+        const formData = {
+          topic: document.getElementById('reportTopic').value,
+          pageCount: document.getElementById('pageCount').value,
+          requirements: document.getElementById('requirements').value
+        };
+        
+        // Set download links with form data as query parameters
+        const pdfUrl = `${window.API_CONFIG.apiBaseUrl}/api/generate-report/${encodeURIComponent(requestId)}/pdf?topic=${encodeURIComponent(formData.topic)}&pageCount=${encodeURIComponent(formData.pageCount)}&requirements=${encodeURIComponent(formData.requirements)}`;
+        const docxUrl = `${window.API_CONFIG.apiBaseUrl}/api/generate-report/${encodeURIComponent(requestId)}/docx?topic=${encodeURIComponent(formData.topic)}&pageCount=${encodeURIComponent(formData.pageCount)}&requirements=${encodeURIComponent(formData.requirements)}`;
+        
+        pdfLink.href = pdfUrl;
+        docxLink.href = docxUrl;
+        
+        // Show modal immediately and prevent any automatic closing
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        // Add a flag to prevent multiple rapid calls
+        modal.dataset.isOpen = 'true';
+        
+        console.log('Modal opened for request ID:', requestId);
+        console.log('Form data:', formData);
+        console.log('PDF URL:', pdfUrl);
+        console.log('DOCX URL:', docxUrl);
+        console.log('Modal should now be visible and stable');
+      }
+
+      // Close download modal
+      function closeDownloadModal() {
+        const modal = document.getElementById('downloadModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        modal.dataset.isOpen = 'false';
+        console.log('Modal closed manually');
+        console.log('Body scroll restored');
+      }
+
+      // Notification system
+      function showNotification(message, type = 'info') {
+       const notification = document.createElement('div');
+       notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full`;
+       
+       if (type === 'success') {
+         notification.className += ' bg-green-500 text-white';
+       } else if (type === 'error') {
+         notification.className += ' bg-red-500 text-white';
+       } else {
+         notification.className += ' bg-blue-500 text-white';
+       }
+       
+       notification.innerHTML = `
+         <div class="flex items-center">
+           <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'} mr-2"></i>
+           <span>${message}</span>
+         </div>
+       `;
+       
+       document.body.appendChild(notification);
+       
+       // Animate in
+       setTimeout(() => {
+         notification.classList.remove('translate-x-full');
+       }, 100);
+       
+       // Remove after 5 seconds
+       setTimeout(() => {
+         notification.classList.add('translate-x-full');
+         setTimeout(() => {
+           document.body.removeChild(notification);
+         }, 300);
+       }, 5000);
+     }
+
+           // Form Validation and Enhancement
+      document.addEventListener('DOMContentLoaded', function() {
+        // Add loading states to submit buttons
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+          if (form.id !== 'aiReportForm') { // Skip AI report form as it has custom handler
+            form.addEventListener('submit', function(e) {
+              const submitBtn = form.querySelector('button[type="submit"]');
+              const originalText = submitBtn.innerHTML;
+              submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating...';
+              submitBtn.disabled = true;
+              
+              // Re-enable after a delay (in case of errors)
+              setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+              }, 5000);
+            });
+          }
+        });
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: 'smooth'
+                });
+              }
+            }
+          });
+        });
+
+                 // Add keyboard event listener for escape key to close modal
+         document.addEventListener('keydown', function(e) {
+           if (e.key === 'Escape') {
+             const modal = document.getElementById('downloadModal');
+             if (!modal.classList.contains('hidden')) {
+               closeDownloadModal();
+             }
+           }
+         });
+
+         // Add download button event listeners
+         document.getElementById('pdfDownload').addEventListener('click', function(e) {
+           e.preventDefault();
+           console.log('PDF download clicked');
+           const href = this.href;
+           if (href && href !== '#') {
+             // Try to force download by creating a temporary link
+             const link = document.createElement('a');
+             link.href = href;
+             link.download = 'report.pdf';
+             link.target = '_blank';
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+           }
+         });
+
+         document.getElementById('docxDownload').addEventListener('click', function(e) {
+           e.preventDefault();
+           console.log('DOCX download clicked');
+           const href = this.href;
+           if (href && href !== '#') {
+             // Try to force download by creating a temporary link
+             const link = document.createElement('a');
+             link.href = href;
+             link.download = 'report.docx';
+             link.target = '_blank';
+             document.body.appendChild(link);
+             link.click();
+             document.body.removeChild(link);
+           }
+         });
+
+                   // Add event listeners for modal close buttons
+          document.getElementById('closeModalBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Close button 1 clicked');
+            closeDownloadModal();
+          });
+
+          document.getElementById('closeModalBtn2').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Close button 2 clicked');
+            closeDownloadModal();
+          });
+
+                   // Close modal when clicking outside
+          const modal = document.getElementById('downloadModal');
+          if (modal) {
+            modal.addEventListener('click', function(e) {
+              if (e.target === modal) {
+                console.log('Modal background clicked - closing modal');
+                closeDownloadModal();
+              }
+            });
+          }
+      });
   </script>
-
 </body>
-
 </html>

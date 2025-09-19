@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Front Page Generator for academic submissions. Create professional front pages for practical files, lab assignments, and projects." />
   <title>Front Page Generator - MITS GWL</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -54,7 +55,7 @@
 
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300 min-h-screen">
   <!-- Navigation -->
-  <nav class="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700">
+  <nav class="bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700" id="top">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <div class="flex items-center space-x-3">
@@ -62,6 +63,14 @@
             <i class="fas fa-file-alt text-white text-sm"></i>
           </div>
           <h1 class="text-xl font-bold text-gray-900 dark:text-white">Front Page Generator</h1>
+        </div>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#top" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium">Home</a>
+          <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium">About</a>
+          <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium">Contact</a>
+          <a href="#privacy" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium">Privacy</a>
+          <a href="#terms" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium">Terms</a>
+          <a href="#disclaimer" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium">Disclaimer</a>
         </div>
         <div class="flex items-center space-x-4">
           <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
@@ -389,6 +398,89 @@
     
    </main>
 
+  <!-- About Section -->
+  <section id="about" class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">About Front Page Generator</h3>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        Front Page Generator helps students create clean, professional front pages for academic submissions such as practical files, lab assignments, and project reports. This tool is designed to be simple, fast, and accessible, ensuring every submission meets institutional standards.
+      </p>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2"><i class="fas fa-bolt mr-2 text-blue-600"></i>Fast</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">Generate a formatted front page in seconds.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2"><i class="fas fa-check-circle mr-2 text-green-600"></i>Accurate</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">Consistent fields for names, subjects, codes, and sessions.</p>
+        </div>
+        <div class="p-4 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600">
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2"><i class="fas fa-shield-alt mr-2 text-purple-600"></i>Privacy-first</h4>
+          <p class="text-sm text-gray-700 dark:text-gray-300">We process only what you submit to generate the page.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Contact</h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-6">Questions or feedback? Reach out using the details below.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2"><i class="fas fa-envelope mr-2"></i>Email</h4>
+          <a href="mailto:aniket.tagor24@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">aniket.tagor24@gmail.com</a>
+        </div>
+        <div class="p-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-2"><i class="fas fa-location-dot mr-2"></i>Location</h4>
+          <p class="text-gray-700 dark:text-gray-300">MITS, Gwalior, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Policy Section -->
+  <section id="privacy" class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Privacy Policy</h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">Last updated: September 19, 2025</p>
+      <div class="prose prose-sm dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+        <p>We respect your privacy. This website collects only the information you provide in forms to generate front pages and does not sell personal data.</p>
+        <ul class="list-disc pl-5">
+          <li>Form Data: Used solely to generate your document.</li>
+          <li>Cookies: We use essential cookies for preferences (e.g., theme) and, if advertising is enabled, cookies from third-party vendors such as Google to serve ads based on prior visits to this or other websites.</li>
+          <li>You can opt out of personalized advertising by visiting <a class="text-blue-600 dark:text-blue-400 hover:underline" href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.</li>
+        </ul>
+        <p>Third-party vendors, including Google, may use cookies to serve ads based on a user's prior visits. Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</p>
+        <p>For any privacy-related requests, email us at <a class="text-blue-600 dark:text-blue-400 hover:underline" href="mailto:aniket.tagor24@gmail.com">aniket.tagor24@gmail.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terms of Service Section -->
+  <section id="terms" class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Terms of Service</h3>
+      <div class="prose prose-sm dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+        <p>By using this website, you agree to use it lawfully and responsibly. Generated outputs are provided “as-is” without warranties. You are responsible for verifying institutional requirements and the accuracy of submitted data.</p>
+        <ul class="list-disc pl-5">
+          <li>Do not submit sensitive or confidential personal data.</li>
+          <li>Do not misuse the service or attempt to disrupt operation.</li>
+          <li>We may update these terms; continued use constitutes acceptance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer Section -->
+  <section id="disclaimer" class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Disclaimer</h3>
+      <p class="text-gray-700 dark:text-gray-300 max-w-none">This is an educational utility. Names, subjects, and other details are provided by users and are their responsibility. We do not guarantee acceptance by any institution.</p>
+    </div>
+  </section>
+
        <!-- Download Options Modal -->
     <div id="downloadModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
       <div class="flex items-center justify-center min-h-screen p-4">
@@ -419,29 +511,58 @@
       </div>
     </div>
 
-   <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="text-center">
-        <p class="text-gray-600 dark:text-gray-300 text-sm">
-          Created with ❤️ by 
-          <a href="https://www.linkedin.com/in/aniket-tagor-25932b246/" target="_blank" 
-             class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
-            Aniket Tagor
-          </a>
-          for MITS GWL & All Department Students
-        </p>
-        <div class="flex justify-center space-x-4 mt-4">
-          <a href="admin_dashboard.html" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium">
-            <i class="fas fa-cog mr-1"></i>Admin Dashboard
-          </a>
-          <span class="text-gray-400">|</span>
-          <span class="text-gray-500 dark:text-gray-400 text-sm">
-            Professional front page generator for academic submissions
-          </span>
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <p class="text-gray-900 dark:text-white font-semibold mb-2">Front Page Generator</p>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Professional front page generator for academic submissions.</p>
+        </div>
+        <div>
+          <p class="text-gray-900 dark:text-white font-semibold mb-2">Quick Links</p>
+          <div class="flex flex-col space-y-2 text-sm">
+            <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+            <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+            <a href="#privacy" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Privacy Policy</a>
+            <a href="#terms" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Terms</a>
+            <a href="#disclaimer" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Disclaimer</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-gray-900 dark:text-white font-semibold mb-2">Connect</p>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Created with ❤️ by 
+            <a href="https://www.linkedin.com/in/aniket-tagor-25932b246/" target="_blank" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">Aniket Tagor</a>
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 text-sm mt-2"><i class="fas fa-envelope mr-2"></i><a href="mailto:aniket.tagor24@gmail.com" class="hover:underline">aniket.tagor24@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="mt-6 border-t border-gray-200 dark:border-gray-700 pt-4 flex flex-col md:flex-row items-center justify-between">
+        <p class="text-gray-500 dark:text-gray-400 text-xs">© <span id="yearSpan"></span> Front Page Generator. All rights reserved.</p>
+        <div class="flex items-center space-x-4 mt-2 md:mt-0">
+          <a href="#privacy" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-xs">Privacy</a>
+          <a href="#terms" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-xs">Terms</a>
+          <a href="#disclaimer" class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-xs">Disclaimer</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookieBanner" class="fixed bottom-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:right-auto max-w-3xl z-50 hidden">
+    <div class="glass-effect rounded-xl shadow-xl p-5 bg-white/90 dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700">
+      <div class="flex items-start md:items-center md:space-x-4">
+        <i class="fas fa-cookie-bite text-yellow-600 text-2xl mr-3 md:mr-0"></i>
+        <div class="text-sm text-gray-800 dark:text-gray-200">
+          <p class="mb-2">We use essential cookies to remember preferences. If ads are enabled, third-party vendors, including Google, may use cookies to serve ads based on your prior visits. You can opt out of personalized advertising in Google Ads Settings.</p>
+          <div class="flex flex-wrap gap-3 mt-2">
+            <button id="cookieAccept" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm">Accept</button>
+            <button id="cookieDecline" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 text-sm">Decline non-essential</button>
+            <a href="#privacy" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="config.js"></script>
   <script>
@@ -458,6 +579,12 @@
       const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
       localStorage.setItem('theme', currentTheme);
     });
+
+    // Footer year
+    const yearSpan = document.getElementById('yearSpan');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
 
     // Form Navigation
     function showForm(type) {
@@ -509,55 +636,45 @@
       form.action = templates[count] || "";
     }
 
-         // AI Report Generator Form Handler
-     document.getElementById('aiReportForm').addEventListener('submit', function(e) {
-       e.preventDefault();
-       
-       const submitBtn = this.querySelector('button[type="submit"]');
-       const originalText = submitBtn.innerHTML;
-       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
-       submitBtn.disabled = true;
-       
-               // Collect form data
-        const formData = {
-          topic: document.getElementById('reportTopic').value,
-          pageCount: document.getElementById('pageCount').value,
-          requirements: document.getElementById('requirements').value
-        };
-       
-       // Submit to API
-       fetch('http://localhost:5000/api/submit-report-request', {
-         method: 'POST',
-         headers: {
-           'Content-Type': 'application/json',
-         },
-         body: JSON.stringify(formData)
-       })
-       .then(response => response.json())
-                       .then(data => {
-          if (data.success) {
-            showNotification('Report generated successfully! You can now download your report.', 'success');
-            
-            // Show download options immediately
-            showDownloadOptions(data.request_id, formData.topic);
-            
-            // Reset form after a delay to prevent interference with modal
-            setTimeout(() => {
-              this.reset();
-            }, 2000);
-          } else {
-            showNotification('Error generating report. Please try again.', 'error');
-          }
-        })
-       .catch(error => {
-         console.error('Error:', error);
-         showNotification('Error submitting request. Please try again.', 'error');
-       })
-       .finally(() => {
-         submitBtn.innerHTML = originalText;
-         submitBtn.disabled = false;
+        // AI Report Generator Form Handler (guarded)
+     const aiReportForm = document.getElementById('aiReportForm');
+     if (aiReportForm) {
+       aiReportForm.addEventListener('submit', function(e) {
+         e.preventDefault();
+         const submitBtn = aiReportForm.querySelector('button[type="submit"]');
+         const originalText = submitBtn.innerHTML;
+         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
+         submitBtn.disabled = true;
+         const formData = {
+           topic: document.getElementById('reportTopic')?.value,
+           pageCount: document.getElementById('pageCount')?.value,
+           requirements: document.getElementById('requirements')?.value
+         };
+         fetch('http://localhost:5000/api/submit-report-request', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify(formData)
+         })
+         .then(response => response.json())
+         .then(data => {
+           if (data.success) {
+             showNotification('Report generated successfully! You can now download your report.', 'success');
+             showDownloadOptions(data.request_id, formData.topic);
+             setTimeout(() => { aiReportForm.reset(); }, 2000);
+           } else {
+             showNotification('Error generating report. Please try again.', 'error');
+           }
+         })
+         .catch(error => {
+           console.error('Error:', error);
+           showNotification('Error submitting request. Please try again.', 'error');
+         })
+         .finally(() => {
+           submitBtn.innerHTML = originalText;
+           submitBtn.disabled = false;
+         });
        });
-     });
+     }
 
            // Show download options
       function showDownloadOptions(requestId, topic) {
@@ -744,6 +861,21 @@
               }
             });
           }
+        // Cookie consent banner logic
+        const cookieBanner = document.getElementById('cookieBanner');
+        const cookieAccept = document.getElementById('cookieAccept');
+        const cookieDecline = document.getElementById('cookieDecline');
+        const consent = localStorage.getItem('cookieConsent');
+        if (!consent && cookieBanner) {
+          cookieBanner.classList.remove('hidden');
+        }
+        const setConsent = (value) => {
+          localStorage.setItem('cookieConsent', value);
+          if (cookieBanner) cookieBanner.classList.add('hidden');
+        };
+        if (cookieAccept) cookieAccept.addEventListener('click', () => setConsent('accepted'));
+        if (cookieDecline) cookieDecline.addEventListener('click', () => setConsent('declined'));
+
       });
   </script>
 </body>

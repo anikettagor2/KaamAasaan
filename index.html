@@ -280,7 +280,7 @@
           </div>
         </div>
         
-        <form method="post" id="groupForm" target="_blank" class="p-8 space-y-6">
+        <form method="post" id="groupForm" target="" class="p-8 space-y-6">
           <!-- Purpose Selection -->
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -501,10 +501,10 @@
       // Update form action based on group size
       const form = document.getElementById('groupForm');
       const templates = {
-        1: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
-        2: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
-        3: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
-        4: "https://script.google.com/macros/s/AKfycbzOEhnpbSQLlyvrMy-xi-zia97FyQh15RKPNHHjfhaxWA4IuIPUCiK8cEWNNnwrjgGvgQ/exec",
+        1: "https://script.google.com/macros/s/AKfycbz0t50m9o1MJSjgAtVOBN7YOZhzVHK25jgGziHd6yrUD56CI3lQwvRNCJNy00JDgdKDag/exec",
+        2: "https://script.google.com/macros/s/AKfycbz0t50m9o1MJSjgAtVOBN7YOZhzVHK25jgGziHd6yrUD56CI3lQwvRNCJNy00JDgdKDag/exec",
+        3: "https://script.google.com/macros/s/AKfycbz0t50m9o1MJSjgAtVOBN7YOZhzVHK25jgGziHd6yrUD56CI3lQwvRNCJNy00JDgdKDag/exec",
+        4: "https://script.google.com/macros/s/AKfycbz0t50m9o1MJSjgAtVOBN7YOZhzVHK25jgGziHd6yrUD56CI3lQwvRNCJNy00JDgdKDag/exec",
       };
       form.action = templates[count] || "";
     }

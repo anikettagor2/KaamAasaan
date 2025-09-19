@@ -90,7 +90,7 @@
     </div>
 
     <!-- Selection Cards -->
-    <div id="selectorBox" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 animate-slide-up">
+    <div id="selectorBox" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12 animate-slide-up">
       <!-- Individual Card -->
       <div class="group cursor-pointer" onclick="showForm('front')">
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden">
@@ -131,45 +131,7 @@
         </div>
       </div>
 
-      <!-- AI Report Generator Card -->
-      <div class="group cursor-pointer" onclick="showForm('report')">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div class="gradient-bg p-8 text-center">
-            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-robot text-white text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-2">AI Report</h3>
-            <p class="text-blue-100">AI-powered report generation</p>
-          </div>
-          <div class="p-6">
-            <ul class="text-gray-600 dark:text-gray-300 space-y-2 text-sm">
-              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Project reports</li>
-              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Lab documentation</li>
-              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Research papers</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Handwritten Assignment Generator Card -->
-      <div class="group cursor-pointer" onclick="window.location.href='handwritten_generator.html'">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div class="gradient-bg p-8 text-center">
-            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-pen-fancy text-white text-2xl"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-2">Handwritten</h3>
-            <p class="text-blue-100">Handwritten assignment generator</p>
-          </div>
-          <div class="p-6">
-            <ul class="text-gray-600 dark:text-gray-300 space-y-2 text-sm">
-              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Convert text to handwriting</li>
-              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Download as PDF</li>
-              <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Customizable styles</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      
     </div>
 
     <!-- Individual Form -->
@@ -187,7 +149,7 @@
           </div>
         </div>
         
-        <form method="post" action="https://script.google.com/macros/s/AKfycbwjTPDSS_XuE7nOqMwHYUsnFmwVLcZf0B3d-7f9NcRQe-dSLGqjTZbk5mJiPsxQ7qAVPA/exec" target="_blank" class="p-8 space-y-6">
+        <form method="post" action="https://script.google.com/macros/s/AKfycbxuT3S8PTe44sROMKgv_wUMnQdxR4ZXS9jNpAap7o1U44I0D6Ldi2VwEhJ9WW2DvaLqxg/exec" target="" class="p-8 space-y-6">
           <!-- Purpose Selection -->
           <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -424,67 +386,7 @@
       </div>
     </div>
 
-    <!-- AI Report Generator Form -->
-    <div id="reportForm" class="hidden animate-bounce-in">
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
-        <div class="gradient-bg p-6">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-robot text-white text-xl"></i>
-              <h2 class="text-2xl font-bold text-white">AI Report Generator</h2>
-            </div>
-            <button onclick="goBack()" class="text-white hover:text-blue-200 transition-colors">
-              <i class="fas fa-arrow-left text-xl"></i>
-            </button>
-          </div>
-        </div>
-        
-                 <form id="aiReportForm" class="p-8 space-y-6">
-           <!-- Topic/Title -->
-           <div>
-             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-               <i class="fas fa-lightbulb mr-2"></i>Report Title/Topic
-             </label>
-             <input type="text" id="reportTopic" required placeholder="Enter your report title or topic" 
-                    class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors">
-           </div>
-
-           <!-- Number of Pages -->
-           <div>
-             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-               <i class="fas fa-file-text mr-2"></i>Number of Pages
-             </label>
-             <select id="pageCount" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors">
-               <option value="" disabled selected>Select page count</option>
-               <option value="5">📄 5 Pages</option>
-               <option value="10">📄 10 Pages</option>
-               <option value="15">📄 15 Pages</option>
-               <option value="20">📄 20 Pages</option>
-               <option value="25">📄 25 Pages</option>
-               <option value="30">📄 30 Pages</option>
-               <option value="40">📄 40 Pages</option>
-               <option value="50">📄 50 Pages</option>
-             </select>
-           </div>
-
-           <!-- Additional Requirements -->
-           <div>
-             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-               <i class="fas fa-list-check mr-2"></i>Additional Requirements
-             </label>
-             <textarea id="requirements" rows="6" placeholder="Describe what you want in the report. Include any specific topics, sections, technologies, methodologies, or any other requirements you want included..." 
-                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors resize-none"></textarea>
-           </div>
-
-          <!-- Submit Button -->
-          <div class="pt-6">
-            <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              <i class="fas fa-magic mr-2"></i>Generate AI Report
-            </button>
-          </div>
-        </form>
-      </div>
-         </div>
+    
    </main>
 
        <!-- Download Options Modal -->
